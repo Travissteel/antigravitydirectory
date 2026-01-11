@@ -1,7 +1,7 @@
 # Antigravity Directory - Project Summary
 
-**Version:** MVP 1.5 | **Updated:** January 2026
-**Status:** Phase 1 Complete - Core MVP with full content
+**Version:** MVP 2.0 | **Updated:** January 2026
+**Status:** Phase 2 Complete - Enhanced Discovery & Official Branding
 
 ## What It Is
 
@@ -14,7 +14,7 @@ The definitive community-driven directory for discovering, sharing, and safely d
 | Framework | Next.js 14 (App Router) |
 | Language | TypeScript |
 | Styling | Tailwind CSS + Shadcn UI |
-| Theme | Dark mode with neon purple accents |
+| Theme | Official Antigravity (Google 2025 Brighter Palette) |
 | Deployment | Vercel-ready |
 
 ## Content Inventory
@@ -23,9 +23,9 @@ The definitive community-driven directory for discovering, sharing, and safely d
 |------|-------|------------|
 | **Prompts** | 35 | nextjs, react, python, typescript, devops, database, testing, multi-agent, security, api |
 | **Rules** | 21 | coding-style, architectural-patterns, security-standards, performance |
-| **Workflows** | 15 | automated-qa, ci-cd, database-migration, deployment, refactoring |
+| **Workflows** | 17 | automated-qa, ci-cd, database-migration, deployment, refactoring |
 | **MCP Servers** | 15 | testing, database, devops, api |
-| **Total** | **86 resources** | |
+| **Total** | **88 resources** | |
 
 ## Key Differentiators
 
@@ -50,25 +50,32 @@ antigravity-directory/
 │   │   ├── page.tsx            # Rules directory (21 items)
 │   │   └── [slug]/page.tsx     # Individual rule pages
 │   ├── workflows/
-│   │   ├── page.tsx            # Workflows directory (15 items)
+│   │   ├── page.tsx            # Workflows directory (17 items)
 │   │   └── [slug]/page.tsx     # Individual workflow pages
 │   ├── mcp/
 │   │   ├── page.tsx            # MCP servers directory (15 items)
 │   │   └── [slug]/page.tsx     # Individual MCP pages
 │   ├── templates/page.tsx      # Workflow templates
+│   ├── about/page.tsx          # About Antigravity Directory
+│   ├── privacy/page.tsx        # Privacy Policy
+│   ├── terms/page.tsx          # Terms of Service
+│   ├── search/page.tsx         # Dedicated Search Page
 │   ├── llms.txt/route.ts       # AI-friendly content export
 │   ├── sitemap.ts              # Dynamic sitemap
 │   └── robots.ts               # Robots.txt
 ├── components/
 │   ├── layout/
-│   │   ├── Header.tsx          # Navigation with all sections
-│   │   └── Footer.tsx          # Links + disclaimer
+│   │   ├── Header.tsx          # Navigation with Search CMD+K
+│   │   ├── Footer.tsx          # Links + disclaimer
+│   │   └── AntigravityLogo.tsx # Official SVG Logo
 │   ├── directory/
 │   │   ├── SafetyBadge.tsx     # Safety indicators
 │   │   ├── DifficultyBadge.tsx # Difficulty levels
 │   │   ├── DirectoryCard.tsx   # Item card component
-│   │   └── DirectoryGrid.tsx   # Filterable grid
-│   └── JsonLd.tsx              # Structured data
+│   │   ├── DirectoryGrid.tsx   # Advanced Faceted Search
+│   │   ├── CopyButton.tsx      # Feedback on copy
+│   │   └── index.ts            # Components export
+│   └── SearchCommand.tsx       # Global CMD+K Search
 ├── lib/
 │   ├── data.ts                 # All content (86 items)
 │   └── safety-analyzer.ts      # Automated safety scoring
@@ -110,20 +117,20 @@ npm run build
 npm start
 ```
 
-## Phase 1 Complete ✅
+## Phase 2 Complete ✅
 
-- [x] Core directories (Prompts, Rules, Workflows, MCPs)
-- [x] 86 high-quality resources
-- [x] Safety scoring on all items
-- [x] Navigation with all sections
-- [x] SEO routes (sitemap, robots, llms.txt)
-- [x] JSON-LD structured data
+- [x] Advanced faceted search with filters
+- [x] Dedicated /search page
+- [x] Official Antigravity branding & logo integration
+- [x] Balanced centered layout design
+- [x] 88 high-quality resources (+2 agentic workflows)
+- [x] Missing footer pages (/about, /privacy, /terms)
+- [x] "Copy to clipboard" feedback UX
 
-## Phase 2 TODO (Community Features)
+## Phase 3 TODO (Community Features)
 
-- [ ] Advanced faceted search with filters
 - [ ] Breadcrumbs navigation
-- [ ] Blog/articles section
+- [ ] Blog/articles section (MDX setup)
 - [ ] Supabase Auth (GitHub, Google login)
 - [ ] User profiles
 - [ ] Ratings and comments
