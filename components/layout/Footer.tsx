@@ -22,9 +22,10 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Directory</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/prompts" className="hover:text-foreground transition-colors">Prompts</Link></li>
-              <li><Link href="/workflows" className="hover:text-foreground transition-colors">Workflows</Link></li>
-              <li><Link href="/rules" className="hover:text-foreground transition-colors">Rules</Link></li>
+              <li><Link href="/prompts" className="text-muted-foreground hover:text-primary transition-colors">Prompts</Link></li>
+              <li><Link href="/workflows" className="text-muted-foreground hover:text-primary transition-colors">Workflows</Link></li>
+              <li><Link href="/rules" className="text-muted-foreground hover:text-primary transition-colors">Rules</Link></li>
+              <li><Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
               <li><Link href="/mcp" className="hover:text-foreground transition-colors">MCP Servers</Link></li>
               <li><Link href="/templates" className="hover:text-foreground transition-colors">Templates</Link></li>
             </ul>

@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getMCPBySlug, getAllMCPServers } from '@/lib/data';
+import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -47,13 +48,15 @@ export default async function MCPServerPage({ params }: Props) {
 
   return (
     <div className="container py-12 max-w-5xl">
-      <JsonLd data={generateMCPJsonLd(server)} />
-      {/* Back link */}
-      <div className="flex justify-center mb-10">
-        <Link href="/mcp" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors">
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to MCP Servers
-        </Link>
+      {/* Navigation */}
+      <div className="flex flex-col gap-6 mb-8">
+        <Breadcrumbs />
+        <div className="flex justify-center">
+          <Link href="/mcp" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to MCP Servers
+          </Link>
+        </div>
       </div>
 
       {/* Centered Header */}

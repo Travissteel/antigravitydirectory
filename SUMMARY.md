@@ -1,7 +1,7 @@
 # Antigravity Directory - Project Summary
 
-**Version:** MVP 2.0 | **Updated:** January 2026
-**Status:** Phase 2 Complete - Enhanced Discovery & Official Branding
+**Version:** MVP 2.5 | **Updated:** January 2026
+**Status:** Phase 3 Foundation Complete - Community & Content
 
 ## What It Is
 
@@ -15,7 +15,8 @@ The definitive community-driven directory for discovering, sharing, and safely d
 | Language | TypeScript |
 | Styling | Tailwind CSS + Shadcn UI |
 | Theme | Official Antigravity (Google 2025 Brighter Palette) |
-| Deployment | Vercel-ready |
+| Deployment | Cloudflare Pages |
+| Backend | Appwrite (Auth, DB, Storage) |
 
 ## Content Inventory
 
@@ -117,17 +118,15 @@ npm run build
 npm start
 ```
 
-## Phase 2 Complete ✅
+## Phase 3 Foundation Complete ✅
 
-- [x] Advanced faceted search with filters
-- [x] Dedicated /search page
-- [x] Official Antigravity branding & logo integration
-- [x] Balanced centered layout design
-- [x] 88 high-quality resources (+2 agentic workflows)
-- [x] Missing footer pages (/about, /privacy, /terms)
-- [x] "Copy to clipboard" feedback UX
+- [x] Hierarchical Navigation (Breadcrumbs)
+- [x] Technical Blog infrastructure & initial content
+- [x] Appwrite SDK integration & AuthProvider foundation
+- [x] User Profile system templates
+- [x] Official Branding & Centered Layouts
 
-## Phase 3 TODO (Community Features)
+## Phase 4 TODO (Community Features & Scaling)
 
 - [ ] Breadcrumbs navigation
 - [ ] Blog/articles section (MDX setup)
