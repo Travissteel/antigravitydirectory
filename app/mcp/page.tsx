@@ -24,10 +24,10 @@ export default function MCPPage() {
 
   return (
     <div className="container py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">MCP Servers</h1>
-        <p className="text-muted-foreground">
-          {servers.length} integrations for databases, payments, AI, and more
+      <div className="mb-12 text-center max-w-2xl mx-auto">
+        <h1 className="text-4xl font-bold mb-4 tracking-tight">MCP Servers</h1>
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          {servers.length} integrations for databases, payments, AI, and more.
         </p>
       </div>
 

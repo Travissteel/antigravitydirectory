@@ -20,14 +20,14 @@ export default function TemplatesPage() {
 
   return (
     <div className="container py-12">
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-3xl font-bold">Workflow Templates</h1>
-          <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-500/30">
+      <div className="mb-12 text-center max-w-2xl mx-auto">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <h1 className="text-4xl font-bold tracking-tight">Workflow Templates</h1>
+          <Badge variant="outline" className="bg-primary/20 text-primary border-primary/30">
             Beta
           </Badge>
         </div>
-        <p className="text-muted-foreground">
+        <p className="text-lg text-muted-foreground leading-relaxed">
           Complete .antigravity folder templates for common workflows. Clone and customize for your projects.
         </p>
       </div>

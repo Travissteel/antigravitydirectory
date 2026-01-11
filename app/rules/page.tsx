@@ -37,25 +37,24 @@ export default function RulesPage() {
 
   return (
     <div className="container py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Coding Rules & Best Practices</h1>
-        <p className="text-muted-foreground">
-          {allRules.length} curated coding rules across multiple languages and categories
+      <div className="mb-12 text-center max-w-2xl mx-auto">
+        <h1 className="text-4xl font-bold mb-4 tracking-tight">Coding Rules & Best Practices</h1>
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          {allRules.length} curated coding rules across multiple languages and categories.
         </p>
       </div>
 
       {/* Category Filter */}
-      <div className="mb-8">
-        <div className="flex flex-wrap gap-2">
+      <div className="mb-8 flex justify-center">
+        <div className="flex flex-wrap gap-2 justify-center">
           {categories.map((category) => (
             <button
               key={category.value}
               onClick={() => setSelectedCategory(category.value)}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 ${
-                selectedCategory === category.value
-                  ? 'bg-purple-500 text-white'
+              className={`px-4 py-2 rounded-lg transition-all duration-200 ${selectedCategory === category.value
+                  ? 'bg-primary text-white shadow-lg shadow-primary/20'
                   : 'bg-muted text-muted-foreground hover:bg-muted/80'
-              }`}
+                }`}
             >
               {category.label}
             </button>

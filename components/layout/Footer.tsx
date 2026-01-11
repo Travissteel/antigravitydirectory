@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Github, Twitter } from 'lucide-react';
+import { AntigravityLogo } from './AntigravityLogo';
 
 export function Footer() {
   return (
@@ -9,7 +10,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl">🚀</span>
+              <AntigravityLogo className="h-6 w-6" />
               <span className="font-bold text-lg">Antigravity Directory</span>
             </Link>
             <p className="text-sm text-muted-foreground">

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getPromptBySlug, getAllPrompts } from '@/lib/data';
-import { SafetyBadge, DifficultyBadge } from '@/components/directory';
+import { SafetyBadge, DifficultyBadge, CopyButton } from '@/components/directory';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -38,43 +38,39 @@ export default async function PromptPage({ params }: Props) {
   }
 
   return (
-    <div className="container py-12">
+    <div className="container py-12 max-w-5xl">
       <JsonLd data={generatePromptJsonLd(prompt)} />
       {/* Back link */}
-      <Link href="/prompts" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-6">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Prompts
-      </Link>
+      <div className="flex justify-center mb-10">
+        <Link href="/prompts" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors">
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back to Prompts
+        </Link>
+      </div>
+
+      {/* Centered Header */}
+      <div className="text-center space-y-6 mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">{prompt.title}</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">{prompt.description}</p>
+
+        <div className="flex flex-wrap justify-center gap-3">
+          <SafetyBadge level={prompt.safetyLevel} score={prompt.safetyScore} />
+          <DifficultyBadge level={prompt.difficulty} />
+          {prompt.tags.map((tag) => (
+            <Badge key={tag} variant="secondary" className="px-3 py-1">#{tag}</Badge>
+          ))}
+        </div>
+      </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main content */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Header */}
-          <div>
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <h1 className="text-3xl font-bold">{prompt.title}</h1>
-              <SafetyBadge level={prompt.safetyLevel} score={prompt.safetyScore} />
-            </div>
-            <p className="text-lg text-muted-foreground">{prompt.description}</p>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            <DifficultyBadge level={prompt.difficulty} />
-            {prompt.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">{tag}</Badge>
-            ))}
-          </div>
-
           {/* Content */}
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-lg">Prompt Content</CardTitle>
               <div className="flex gap-2">
-                <Button size="sm" variant="outline">
-                  <Copy className="h-4 w-4 mr-2" />
-                  Copy
-                </Button>
+                <CopyButton content={prompt.content} />
                 <Button size="sm" variant="outline">
                   <Download className="h-4 w-4 mr-2" />
                   Download
@@ -190,6 +186,6 @@ export default async function PromptPage({ params }: Props) {
           </Card>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

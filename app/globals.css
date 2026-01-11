@@ -5,25 +5,43 @@
 
 :root {
   /* Antigravity Theme Colors */
-  --background: hsl(0 0% 3.9%);
+  /* Official Antigravity / Google 2025 Brighter Palette */
+  --background: hsl(0 0% 2%);
   --foreground: hsl(0 0% 98%);
-  --primary: hsl(270 100% 60%);
+
+  --google-blue: hsl(215 100% 60%);
+  /* #3186FF */
+  --google-red: hsl(1 97% 61%);
+  /* #FC413D */
+  --google-yellow: hsl(44 98% 50%);
+  /* #FBBC04 */
+  --google-green: hsl(150 100% 36%);
+  /* #00B95C */
+
+  --primary: var(--google-blue);
   --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(270 50% 20%);
+
+  --secondary: hsl(215 30% 10%);
   --secondary-foreground: hsl(0 0% 98%);
-  --accent: hsl(280 100% 70%);
+
+  --accent: var(--google-blue);
   --accent-foreground: hsl(0 0% 100%);
-  --muted: hsl(270 10% 15%);
-  --muted-foreground: hsl(0 0% 60%);
-  --card: hsl(0 0% 7%);
+
+  --muted: hsl(215 15% 10%);
+  --muted-foreground: hsl(0 0% 65%);
+
+  --card: hsl(0 0% 5%);
   --card-foreground: hsl(0 0% 98%);
-  --popover: hsl(0 0% 7%);
+
+  --popover: hsl(0 0% 5%);
   --popover-foreground: hsl(0 0% 98%);
-  --border: hsl(270 20% 20%);
-  --input: hsl(270 20% 20%);
-  --ring: hsl(270 100% 60%);
-  --radius: 0.625rem;
-  --destructive: hsl(0 84% 60%);
+
+  --border: hsl(215 20% 15%);
+  --input: hsl(215 20% 15%);
+  --ring: var(--google-blue);
+
+  --radius: 0.75rem;
+  --destructive: var(--google-red);
   --destructive-foreground: hsl(0 0% 100%);
 
   /* Chart colors with purple theme */
@@ -99,7 +117,12 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
   }
 }

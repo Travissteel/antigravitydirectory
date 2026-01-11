@@ -13,7 +13,7 @@ interface DirectoryCardProps {
 export function DirectoryCard({ item }: DirectoryCardProps) {
   return (
     <Link href={`/prompts/${item.slug}`}>
-      <Card className="h-full hover:border-purple-500/50 transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/10 cursor-pointer bg-card">
+      <Card className="h-full hover:border-primary/50 transition-all duration-200 hover:shadow-lg hover:shadow-primary/10 cursor-pointer bg-card">
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between gap-2">
             <CardTitle className="text-lg line-clamp-1">{item.title}</CardTitle>

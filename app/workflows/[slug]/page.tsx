@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getWorkflowBySlug, getAllWorkflows } from '@/lib/data';
-import { SafetyBadge } from '@/components/directory';
+import { SafetyBadge, CopyButton } from '@/components/directory';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -49,35 +49,35 @@ export default async function WorkflowPage({ params }: Props) {
   }
 
   return (
-    <div className="container py-12">
+    <div className="container py-12 max-w-5xl">
       {/* Back link */}
-      <Link href="/workflows" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-6">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Workflows
-      </Link>
+      <div className="flex justify-center mb-10">
+        <Link href="/workflows" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors">
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back to Workflows
+        </Link>
+      </div>
+
+      {/* Centered Header */}
+      <div className="text-center space-y-6 mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">{workflow.name}</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">{workflow.description}</p>
+
+        <div className="flex flex-wrap justify-center gap-3">
+          <SafetyBadge level={workflow.safetyLevel} score={workflow.safetyScore} />
+          <Badge variant="outline" className={getCategoryColor(workflow.category)}>
+            {workflow.category.replace('-', ' ')}
+          </Badge>
+          <Badge variant="secondary" className="px-3 py-1">{workflow.difficulty}</Badge>
+          {workflow.tags.map((tag) => (
+            <Badge key={tag} variant="secondary" className="px-3 py-1">#{tag}</Badge>
+          ))}
+        </div>
+      </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main content */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Header */}
-          <div>
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <h1 className="text-3xl font-bold">{workflow.name}</h1>
-              <SafetyBadge level={workflow.safetyLevel} score={workflow.safetyScore} />
-            </div>
-            <p className="text-lg text-muted-foreground">{workflow.description}</p>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="outline" className={getCategoryColor(workflow.category)}>
-              {workflow.category.replace('-', ' ')}
-            </Badge>
-            <Badge variant="secondary">{workflow.difficulty}</Badge>
-            {workflow.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">{tag}</Badge>
-            ))}
-          </div>
 
           {/* Workflow Steps */}
           <Card>
@@ -108,10 +108,7 @@ export default async function WorkflowPage({ params }: Props) {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-lg">Workflow Code</CardTitle>
-              <Button size="sm" variant="outline">
-                <Copy className="h-4 w-4 mr-2" />
-                Copy
-              </Button>
+              <CopyButton content={workflow.content} />
             </CardHeader>
             <CardContent>
               <pre className="bg-muted/50 p-4 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap font-mono">

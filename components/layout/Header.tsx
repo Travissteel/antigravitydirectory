@@ -1,22 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-import { Search, Menu, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useState } from 'react';
+import { SearchCommand } from './SearchCommand';
+import { AntigravityLogo } from './AntigravityLogo';
 
 export function Header() {
-  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl">🚀</span>
-          <span className="font-bold text-xl bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Antigravity Directory
+        <Link href="/" className="flex items-center space-x-3">
+          <AntigravityLogo className="h-8 w-8" />
+          <span className="font-bold text-2xl tracking-tight bg-gradient-to-r from-[#3186FF] via-[#FC413D] to-[#FBBC04] bg-clip-text text-transparent">
+            Antigravity
+          </span>
+          <span className="font-semibold text-xl text-muted-foreground/80">
+            Directory
           </span>
         </Link>
 
@@ -41,15 +43,7 @@ export function Header() {
 
         {/* Search and Actions */}
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search prompts..."
-              className="pl-10 w-64 bg-muted/50"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
+          <SearchCommand />
           <Button variant="default" size="sm" className="bg-purple-600 hover:bg-purple-700">
             <Plus className="h-4 w-4 mr-2" />
             Submit

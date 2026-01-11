@@ -12,10 +12,10 @@ export default function PromptsPage() {
 
   return (
     <div className="container py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Prompts & Workflows</h1>
-        <p className="text-muted-foreground">
-          {prompts.length} curated prompts, all audited for safety
+      <div className="mb-12 text-center max-w-2xl mx-auto">
+        <h1 className="text-4xl font-bold mb-4 tracking-tight">Prompts & Workflows</h1>
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          {prompts.length} curated prompts, all audited for safety. Ready to copy and use in Antigravity.
         </p>
       </div>
 

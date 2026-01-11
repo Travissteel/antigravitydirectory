@@ -46,39 +46,40 @@ export default async function MCPServerPage({ params }: Props) {
   };
 
   return (
-    <div className="container py-12">
+    <div className="container py-12 max-w-5xl">
       <JsonLd data={generateMCPJsonLd(server)} />
       {/* Back link */}
-      <Link href="/mcp" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-6">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to MCP Servers
-      </Link>
+      <div className="flex justify-center mb-10">
+        <Link href="/mcp" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors">
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back to MCP Servers
+        </Link>
+      </div>
+
+      {/* Centered Header */}
+      <div className="text-center space-y-6 mb-12">
+        <div className="flex flex-col items-center gap-4">
+          <span className="text-6xl mb-2">{server.icon}</span>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">{server.name}</h1>
+          <div className="flex justify-center gap-3">
+            <Badge variant="outline" className={getPricingColor(server.pricing)}>
+              {server.pricing}
+            </Badge>
+            <Badge variant="secondary" className="capitalize">{server.category}</Badge>
+          </div>
+        </div>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">{server.description}</p>
+
+        <div className="flex flex-wrap justify-center gap-2">
+          {server.tags.map((tag) => (
+            <Badge key={tag} variant="secondary" className="px-3 py-1">#{tag}</Badge>
+          ))}
+        </div>
+      </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main content */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Header */}
-          <div>
-            <div className="flex items-start gap-4 mb-4">
-              <span className="text-4xl">{server.icon}</span>
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-3xl font-bold">{server.name}</h1>
-                  <Badge variant="outline" className={getPricingColor(server.pricing)}>
-                    {server.pricing}
-                  </Badge>
-                </div>
-                <p className="text-lg text-muted-foreground">{server.description}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {server.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">{tag}</Badge>
-            ))}
-          </div>
 
           {/* Long description */}
           <Card>
@@ -135,7 +136,7 @@ export default async function MCPServerPage({ params }: Props) {
                 href={server.docsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300"
+                className="flex items-center gap-2 text-sm text-primary hover:text-primary/80"
               >
                 <ExternalLink className="h-4 w-4" />
                 Documentation
@@ -145,7 +146,7 @@ export default async function MCPServerPage({ params }: Props) {
                   href={server.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300"
+                  className="flex items-center gap-2 text-sm text-primary hover:text-primary/80"
                 >
                   <Github className="h-4 w-4" />
                   GitHub Repository

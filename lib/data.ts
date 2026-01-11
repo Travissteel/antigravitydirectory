@@ -1854,6 +1854,69 @@ export function getFeaturedPrompts(): DirectoryItem[] {
   return prompts.filter(p => p.safetyLevel === 'safe').slice(0, 6);
 }
 
+export type UnifiedSearchItem = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  type: 'prompt' | 'rule' | 'workflow' | 'mcp' | 'template';
+  category: string;
+};
+
+export function getSearchItems(): UnifiedSearchItem[] {
+  const searchItems: UnifiedSearchItem[] = [];
+
+  // Add prompts
+  prompts.forEach(p => {
+    searchItems.push({
+      id: p.id,
+      slug: p.slug,
+      title: p.title,
+      description: p.description,
+      type: p.type,
+      category: p.category
+    });
+  });
+
+  // Add rules
+  rules.forEach(r => {
+    searchItems.push({
+      id: r.id,
+      slug: r.slug,
+      title: r.name,
+      description: r.description,
+      type: 'rule',
+      category: r.category
+    });
+  });
+
+  // Add workflows
+  workflows.forEach(w => {
+    searchItems.push({
+      id: w.id,
+      slug: w.slug,
+      title: w.name,
+      description: w.description,
+      type: 'workflow',
+      category: w.category
+    });
+  });
+
+  // Add mcp servers
+  mcpServers.forEach(m => {
+    searchItems.push({
+      id: m.id,
+      slug: m.slug,
+      title: m.name,
+      description: m.description,
+      type: 'mcp',
+      category: m.category
+    });
+  });
+
+  return searchItems;
+}
+
 // Helper function to create rules
 function createRule(
   name: string,
@@ -6841,6 +6904,100 @@ function createWorkflow(
 
 // Workflows array - populated with 8 high-quality workflows
 export const workflows: Workflow[] = [
+  createWorkflow(
+    'Multi-Agent Orchestration System',
+    'A reusable multi-agent system (Orchestrator, Coder, Tester, Stuck) for building complex software projects with automated visual testing',
+    `# Multi-Agent Orchestration System
+
+This is a generic, reusable multi-agent system that transforms how you build software projects with AI coding assistants. It uses specialized subagents to manage complex projects from start to finish, with mandatory human oversight and visual testing.
+
+## System Architecture
+
+- **🧠 Orchestrator** - Large context window managing the big picture and todos (Gemini 1M+).
+- **✍️ Coder Subagent** - Implements one task at a time in isolated context.
+- **👁️ Tester Subagent** - Visual verification using Playwright MCP browser automation.
+- **🆘 Stuck Subagent** - Human escalation point (no automatic fallbacks).
+
+## Folder Structure
+
+\`\`\`
+.antigravity/
+├── GEMINI.md       # Orchestrator instructions & Todo list
+├── agents/         # Subagent system prompts
+│   ├── coder.md    # Coding specialist
+│   ├── tester.md   # Visual testing specialist
+│   └── stuck.md    # Human escalation handler
+└── brain/          # Project memory and artifacts
+\`\`\`
+
+## Core Rules
+
+1. **One Task at a Time**: Perform ONLY one task before reporting back.
+2. **Always Test**: Every implementation MUST be verified by the Tester.
+3. **No Fallbacks**: If something is unclear or fails, escalate via the Stuck agent.
+4. **Split Large Tasks**: If a task will exceed token limits, split it into smaller todos.
+
+## Implementation Guide
+
+1. Create the \`.antigravity\` folder in your project root.
+2. Initialize \`GEMINI.md\` with your project's high-level goal.
+3. Define subagents in the \`agents/\` directory.
+4. Use the Orchestrator to break down the goal into a markdown checklist (Todo list).
+5. Delegate the first item to the Coder, then verify with the Tester.`,
+    'automated-qa',
+    'advanced',
+    ['multi-agent', 'orchestration', 'visual-testing', 'automation', 'human-in-the-loop'],
+    [
+      { order: 1, title: 'Initialize Folder Structure', description: 'Create .antigravity/ folder and essential agent prompt files' },
+      { order: 2, title: 'Setup Orchestrator', description: 'Define the high-level goal and create an initial todo list' },
+      { order: 3, title: 'Delegate & Execute', description: 'Hand off tasks to the Coder subagent for implementation' },
+      { order: 4, title: 'Visual Verification', description: 'Use the Tester agent and Playwright to verify UI and functionality' },
+      { order: 5, title: 'Human Escalation', description: 'Consult the user via the Stuck agent whenever a decision is required' }
+    ],
+    '10-15 minutes'
+  ),
+
+  createWorkflow(
+    'Self-Annealing Agentic Workspace (DOE)',
+    'A Directive-Orchestration-Execution architecture with a built-in self-annealing loop for error diagnosis and automatic recovery',
+    `# Self-Annealing Agentic Workspace (DOE)
+
+DOE (Directive-Orchestration-Execution) is an architecture pattern for AI agents that emphasizes systematic execution and automatic recovery from errors.
+
+## The DOE Architecture
+
+- **Directives (D)**: SOPs (Standard Operating Procedures) in Markdown that define *what* to do.
+- **Orchestration (O)**: The AI agent that decides *how* to execute based on the directive.
+- **Execution (E)**: Python scripts and APIs that perform the actual work.
+
+## Self-Annealing Loop
+
+When an error occurs during execution, the system enters a self-annealing phase:
+1. **Capture**: The agent captures the error output and context.
+2. **Diagnose**: The agent analyzes the root cause of the failure.
+3. **Fix**: The agent modifies the execution script or the directive itself.
+4. **Learn**: The system updates its permanent memory/SOP to avoid the error in the future.
+5. **Resume**: The agent restarts the task with the fix applied.
+
+## How to Use
+
+1. **Define Directive**: Write a clear SOP in \`directives/lead_generation.md\`.
+2. **Run Agent**: Provide the goal (e.g., "Scrape 500 leads").
+3. **Map & Plan**: The agent maps the goal to a directive and creates an execution plan.
+4. **Execute & Anneal**: The agent runs scripts. If it hit a wall, it self-anneals and continues.`,
+    'refactoring',
+    'advanced',
+    ['self-annealing', 'lead-gen', 'doe-architecture', 'systematic-ai', 'error-recovery'],
+    [
+      { order: 1, title: 'Define Directives', description: 'Create Markdown SOPs that define standard procedures for tasks' },
+      { order: 2, title: 'Execution Planning', description: 'The agent maps the user goal to a directive and plans steps' },
+      { order: 3, title: 'Scripted Execution', description: 'Perform tasks using specialized Python scripts and APIs' },
+      { order: 4, title: 'Error Diagnosis', description: 'Automatically capture and analyze failures when they occur' },
+      { order: 5, title: 'Self-Annealing', description: 'Fix scripts or SOPs automatically and resume the workflow' }
+    ],
+    '5-10 minutes'
+  ),
+
   createWorkflow(
     'E2E Testing with Playwright',
     'Comprehensive end-to-end testing workflow using Playwright for web applications',
